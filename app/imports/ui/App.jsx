@@ -1,12 +1,9 @@
 import React from 'react';
-import { Hello } from './Hello.jsx';
-import { Info } from './Info.jsx';
 import Foundation from 'react-foundation';
 
 export const App = () => (
   <div>
-    <h1>Welcome to Meteor!</h1>
-    <Hello/>
-    <Info/>
+    <h1>NPR Locator</h1>
+      <button className="button">Find By Location</button>
   </div>
 );
