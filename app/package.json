@@ -9,12 +9,18 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.8.4",
+    "elliptic": "^6.5.3",
+    "foundation": "^4.2.1-1",
     "foundation-sites": "^6.6.1",
+    "jquery": "^3.5.1",
     "meteor-node-stubs": "^1.0.0",
+    "mkdirp": "^1.0.4",
+    "node-fetch": "^2.6.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-foundation": "^0.9.6",
-    "react-router": "^5.1.2"
+    "react-router": "^5.1.2",
+    "what-input": "^5.2.10"
   },
   "meteor": {
     "mainModule": {

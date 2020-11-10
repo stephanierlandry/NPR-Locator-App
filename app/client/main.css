@@ -1,4 +1,30 @@
+
+
 body {
   padding: 10px;
   font-family: sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.block {
+  display: block;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.height-auto {
+  height: auto;
 }
