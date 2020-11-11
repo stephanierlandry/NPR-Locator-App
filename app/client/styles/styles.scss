@@ -1,0 +1,45 @@
+@import '{}/node_modules/foundation/scss/foundation.scss';
+
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+/* Global */
+
+$blue: #2C63ae;
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.height-auto {
+  height: auto;
+}
+
+.NPR-container {
+  padding-top: 3em;
+}
+
+.NPR-container__button {
+  background-color: $blue;
+  border: none;
+  border-radius: .25em;
+  font-weight: 200;
+}
+
+.NPR-container__button:hover {
+  background-color: darken($blue, 15%);
+}
