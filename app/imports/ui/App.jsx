@@ -21,27 +21,32 @@ export const App = () => {
     const zipCodeResult = Session.get('zip');
 
     Meteor.call('getNprData', zipCodeResult, (e,r) => {
-      console.log(r.data.items[0].attributes.brand)
+      const parsedNprResult = EJSON.parse(r.content);
+      const nprStationResult = parsedNprResult.items
+      const stations = [];
+
+      for(let ii of nprStationResult){
+        const stationData = ii.attributes.brand;
+          stations.push({
+            'call' : `${stationData.call}`,
+            'frequency' : `${stationData.frequency}`,
+            'city' : `${stationData.marketCity}`,
+            'state' : `${stationData.marketState}`,
+            'name' : `${stationData.name}`,
+            'tagline' : `${stationData.tagline}`})
+      }
+
+      Session.set('nprStations', stations);
     })
   }
 
-  const onError = () => {
-    console.log('error')
-  }
+
+const onError = (error) => {
+  alert(error.message)
+  Session.set('geoLocateError', error.message);
+}
 
   navigator.geolocation.getCurrentPosition(onSuccess, onError)
-
-  // Meteor.startup(function() {
-  //   navigator.geolocation.getCurrentPosition(function(position) {
-  //     Session.set('lat', position.coords.latitude);
-  //     Session.set('lon', position.coords.longitude);
-  //     console.log(position.coords)
-  //   });
-  // });
-
-  // navigator.geolocation.getCurrentPosition((position) => {
-  //   console.log(position);
-  // });
 
 
   return(
