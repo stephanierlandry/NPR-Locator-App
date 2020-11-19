@@ -47,11 +47,21 @@ Meteor.methods({
       }
   },
   getLocationByZip(lat, lon){
-    const zipResult = HTTP.call('GET', `http://api.geonames.org/findNearbyPostalCodesJSON?lat=${lat}&lng=${lon}&username=stephaniegibby`)
-    return zipResult
+    try {
+      const zipResult = HTTP.call('GET', `http://api.geonames.org/findNearbyPostalCodesJSON?lat=${lat}&lng=${lon}&username=stephaniegibby`)
+      return zipResult
+    }
+    catch(e) {
+      console.error(e)
+    }
   },
   getLocationByCity(lat,lon){
-    const cityResult = HTTP.call('GET', `http://api.geonames.org/findNearbyPlaceNameJSON?formatted=true&lat=${lat}&lng=${lon}&username=stephaniegibby`)
-    return cityResult
+    try {
+      const cityResult = HTTP.call('GET', `http://api.geonames.org/findNearbyPlaceNameJSON?formatted=true&lat=${lat}&lng=${lon}&username=stephaniegibby`)
+      return cityResult
+    }
+    catch(e) {
+      console.error(e)
+    }
   }
 });
