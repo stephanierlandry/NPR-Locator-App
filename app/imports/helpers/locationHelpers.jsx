@@ -32,7 +32,6 @@ const onSuccess = (position) => {
           }
 
           console.log('im working', stations)
-
           Session.set('nprStations', stations);
         }
 

@@ -5,8 +5,8 @@ import { App } from '/imports/ui/App';
 import { onSuccess, onError } from '/imports/helpers/locationHelpers.jsx'
 
 Meteor.startup(() => {
-  
-  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
 
   render(<App/>, document.getElementById('react-target'));
 });
