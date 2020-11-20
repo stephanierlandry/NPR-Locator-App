@@ -6,7 +6,6 @@ export default class Button extends React.Component {
 
     const getStationByLocation = () => {
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
-        console.log('getting location in Button')
     }
 
     return (

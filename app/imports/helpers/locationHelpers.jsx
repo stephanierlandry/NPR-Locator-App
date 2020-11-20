@@ -22,6 +22,8 @@ const onSuccess = (position) => {
 
           for(let ii of nprStationResult){
             const stationData = ii.attributes.brand;
+            const stationImageUrl = ii.links.brand[1].href;
+            // console.log('from locationHelpers', ii.links.brand[1].href)
               stations.push({
                 'call' : `${stationData.call}`,
                 'frequency' : `${stationData.frequency}`,
@@ -29,14 +31,16 @@ const onSuccess = (position) => {
                 'state' : `${stationData.marketState}`,
                 'name' : `${stationData.name}`,
                 'tagline' : `${stationData.tagline}`})
+
           }
 
-          console.log('im working', stations)
           Session.set('nprStations', stations);
+          Session.set('nprStationsAvailable', true);
         }
 
-        if(e){
+        if(e) {
           console.error(e)
+          Session.set('nprStationError', true);
         }
       })
     }
@@ -46,7 +50,6 @@ const onSuccess = (position) => {
     }
   })
 }
-
 
 const onError = (error) => {
   alert(error.message)
