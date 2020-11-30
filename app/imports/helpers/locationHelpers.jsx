@@ -17,21 +17,21 @@ const onSuccess = (position) => {
       Meteor.call('getNprData', zipCodeResult, (e,r) => {
         if (r){
           const parsedNprResult = EJSON.parse(r.content);
-          const nprStationResult = parsedNprResult.items
+          const nprStationResult = parsedNprResult.items;
           const stations = [];
 
           for(let ii of nprStationResult){
             const stationData = ii.attributes.brand;
-            const stationImageUrl = ii.links.brand[1].href;
-            // console.log('from locationHelpers', ii.links.brand[1].href)
+            const stationLogo = ii.links.brand[1].href;
               stations.push({
                 'call' : `${stationData.call}`,
                 'frequency' : `${stationData.frequency}`,
                 'city' : `${stationData.marketCity}`,
                 'state' : `${stationData.marketState}`,
                 'name' : `${stationData.name}`,
-                'tagline' : `${stationData.tagline}`})
-
+                'tagline' : `${stationData.tagline}`,
+                'logoUrl' : `${stationLogo}`
+              })
           }
 
           Session.set('nprStations', stations);

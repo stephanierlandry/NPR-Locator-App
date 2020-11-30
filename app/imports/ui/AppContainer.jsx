@@ -9,8 +9,6 @@ export const AppContainer = () => {
 
   navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
-  const sessionData = Session.get('nprStations')
-
   return(
     <div className="grid-container">
       <div className="grid-x grid-padding-x small-up-2 medium-up-4 large-up-6">

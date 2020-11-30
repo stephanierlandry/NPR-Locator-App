@@ -1,4 +1,5 @@
 import React from 'react';
+import { Session } from 'meteor/session';
 
 
 export default class StationData extends React.Component {
@@ -16,6 +17,7 @@ export default class StationData extends React.Component {
                 <div>{station.frequency}</div>
                 <div>{station.name}</div>
                 <div>{station.tagline}</div>
+                <img src={station.logoUrl}/>
               </div>
             )
           })
