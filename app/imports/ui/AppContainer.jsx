@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import Button from './Button.jsx';
+import Search from './Button.jsx';
 import StationData from './StationData.jsx';
 import { onSuccess, onError } from '/imports/helpers/locationHelpers.jsx'
 import { withTracker } from 'meteor/react-meteor-data';
@@ -15,7 +15,7 @@ export const AppContainer = () => {
         <div className="cell shrink"></div>
         <div className="cell auto grid justify-center NPR-container">
           <h1>NPR Locator</h1>
-          <Button />
+          <Search />
           <StationData />
         </div>
         <div className="cell shrink"></div>

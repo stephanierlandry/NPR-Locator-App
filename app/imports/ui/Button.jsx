@@ -1,15 +1,22 @@
 import React from 'react';
-import { onSuccess, onError } from '/imports/helpers/locationHelpers.jsx'
+import { onSuccess, onError } from '/imports/helpers/locationHelpers.jsx';
+import { Session } from 'meteor/session';
 
-export default class Button extends React.Component {
+export default class Search extends React.Component {
   render() {
 
-    const getStationByLocation = () => {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    const getStationByLocation = (event) => {
+      const value = event.target.value;
+      Session.set('query', value);
+      const query = Session.get('query')
+      console.log(query)
     }
 
     return (
-      <button className="button NPR-container__button" onClick={getStationByLocation()} >Find By Location</button>
+      <div>
+        <input type="search" onChange={getStationByLocation}/>
+        <button className="button NPR-container__button">Find By Location</button>
+      </div>
     );
   }
 }
