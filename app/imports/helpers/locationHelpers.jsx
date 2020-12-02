@@ -11,38 +11,8 @@ const onSuccess = (position) => {
     if (r) {
       const parsedZipResult = EJSON.parse(r.content);
       Session.set('zip', parsedZipResult.postalCodes[0].postalCode);
-
       const zipCodeResult = Session.get('zip');
 
-      Meteor.call('getNprData', zipCodeResult, (e,r) => {
-        if (r){
-          const parsedNprResult = EJSON.parse(r.content);
-          const nprStationResult = parsedNprResult.items;
-          const stations = [];
-
-          for(let ii of nprStationResult){
-            const stationData = ii.attributes.brand;
-            const stationLogo = ii.links.brand[1].href;
-              stations.push({
-                'call' : `${stationData.call}`,
-                'frequency' : `${stationData.frequency}`,
-                'city' : `${stationData.marketCity}`,
-                'state' : `${stationData.marketState}`,
-                'name' : `${stationData.name}`,
-                'tagline' : `${stationData.tagline}`,
-                'logoUrl' : `${stationLogo}`
-              })
-          }
-
-          Session.set('nprStations', stations);
-          Session.set('nprStationsAvailable', true);
-        }
-
-        if(e) {
-          console.error(e)
-          Session.set('nprStationError', true);
-        }
-      })
     }
 
     if (e) {
@@ -56,4 +26,37 @@ const onError = (error) => {
   Session.set('geoLocateError', error.message);
 }
 
-export { onError, onSuccess };
+const getNprStation = (zip) => {
+
+  Meteor.call('getNprData', zip, (e,r) => {
+    console.log(r)
+    if (r){
+      const parsedNprResult = EJSON.parse(r.content);
+      const nprStationResult = parsedNprResult.items;
+      let stations = [ ];
+
+      for(let ii of nprStationResult){
+        const stationData = ii.attributes.brand;
+        const stationLogo = ii.links.brand[1].href;
+          stations.push({
+            'call' : `${stationData.call}`,
+            'frequency' : `${stationData.frequency}`,
+            'city' : `${stationData.marketCity}`,
+            'state' : `${stationData.marketState}`,
+            'name' : `${stationData.name}`,
+            'tagline' : `${stationData.tagline}`,
+            'logoUrl' : `${stationLogo}`
+          })
+      }
+        
+      return stations;
+    }
+
+    if(e) {
+      console.error(e)
+      Session.set('nprStationError', true);
+    }
+  })
+}
+
+export { onError, onSuccess, getNprStation };

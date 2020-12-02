@@ -7,7 +7,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 
 export const AppContainer = () => {
 
-  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  // navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
   return(
     <div className="grid-container">

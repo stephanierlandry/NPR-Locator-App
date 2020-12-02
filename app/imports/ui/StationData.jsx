@@ -9,18 +9,7 @@ export default class StationData extends React.Component {
 
     return (
       <div>
-        {
-          sessionData.map(station => {
-            return (
-              <div>
-                <div>{station.frequency}</div>
-                <div>{station.name}</div>
-                <div>{station.tagline}</div>
-                <img src={station.logoUrl}/>
-              </div>
-            )
-          })
-        }
+        hey
       </div>
     );
   }

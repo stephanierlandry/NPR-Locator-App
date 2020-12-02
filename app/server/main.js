@@ -34,7 +34,7 @@ function insertLink({ title, url }) {
 
 Meteor.methods({
   getNprData(zip){
-    const apiUrl = `https://www.npr.org/proxy/stationfinder/v3/stations?q=`;
+    const apiUrl = `https://www.npr.org/proxy/stationfinder/v3/stations?q=${zip}`;
       try {
         const result = HTTP.call('GET', apiUrl);
         return result;
